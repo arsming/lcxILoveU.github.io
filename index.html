@@ -13,9 +13,9 @@
 	</head>
 	<body>
 		
-			<div class="mb-box" id="mb-box" style="margin-top: 50px;">
+			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 			<div class="bb">
-				<h2>to lcx</h2>
+				<h2>to lcx1</h2>
 				<div class="bb_text">
 					<div id="code" class="code">
 						<div>我对霉霉算起来大概是10年的喜欢吧，那对你就是10年多几天的喜欢。是的，我对霉霉是爱屋及乌的，我首先是喜欢你。</div>
@@ -69,16 +69,12 @@
 				return this;
 			}
 			document.getElementById("code").typewriter();
-			
-			
-			
+			document.getElementById('audio').play();
 			//因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
-			$(document).one('WeixinJSBridgeReady', function () {
-			    var audio = document.getElementById("audio");
-			    audio.play(); //执行一次
-			    audio.setAttribute('src', 'music/合成多首_缩混.mp3'); // 替换src
-			    audio.load();
-			})
+					//因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
+			document.addEventListener("WeixinJSBridgeReady", function () {
+				document.getElementById('audio').play();
+			}, false);
 			// 监听摇晃事件简化版
 			window.addEventListener('devicemotion', function () {
 			    document.getElementById("audio").play(); // 成功播放
