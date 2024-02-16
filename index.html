@@ -23,7 +23,7 @@
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
-					<h2>to you1</h2>
+					<h2>to you2</h2>
 					<div class="bb_text">
 						<div id="code" class="code">
 							<div>Please don't be in love with someone else.</div>
@@ -70,15 +70,31 @@
 				</div>
 			</div>
 		</div>
-		<audio autoplay preload="auto"  loop id="music1">
+		<audio autoplay preload="auto"  loop id="bgmusic">
 			<source src="music/Enchanted - Taylor Swift (Piano Cover).mp3" type="audio/mpeg"/>
 			您的浏览器不支持音频播放。
 		</audio>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jweixin-1.6.0.js" type="text/javascript" charset="utf-8"></script>
 		<script>
-			
+			// 播放音乐
+			// 微信配置信息 即使不正确也没问题，但是一定要有这一步
+			wx.config({
+				debug: false,
+				appId: '',
+				timestamp: 1,
+				nonceStr: '',
+				signature: '',
+				jsApiList: [],
+			});
+
+			// 在ready时触发相关事件
+			wx.ready(function() {
+				// 播放背景音乐
+				var bgMusic = document.getElementById('bgmusic');
+				bgMusic.play();
+			});
 			//div中文字输出的，自个研究
 			Element.prototype.typewriter = function(a) {
 				var d = this,
@@ -120,61 +136,6 @@
 				minSize: 5,
 				maxSize: 22
 			});
-			// 播放音乐
-			function audioAutoPlay (id) {
-      let audio = document.getElementById(id)
-      if (window.WeixinJSBridge) {
-        WeixinJSBridge.invoke(
-          'getNetworkType',
-          {},
-          function (e) {
-            audio.play()
-          },
-          false
-        )
-      } else {
-        document.addEventListener(
-          'touchstart',
-          function () {
-            WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
-              audio.play()
-            })
-          },
-          false
-        )
-      }
-    }
-　　// 检查版本
-    function CheckIsAndroid () {
-      var browser = {
-        versions: (function () {
-          var u = navigator.userAgent
-          return {
-            //移动终端浏览器版本信息
-            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器 //u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
-            iPad: u.indexOf('iPad') > -1 //是否iPad
-          }
-        })()
-      }
-
-      if (browser.versions.android) return true
-      return false
-    }
-
-    window.sound_1 = PIXI.sound.Sound.from({
-      // 用pixi-sound载入音乐,用于安卓
-      url: './all-01.mp3',
-      loop: false
-    })
-
-    if (CheckIsAndroid()) {
-      window.sound_1.play()
-    }else {
-　　　　audioAutoPlay('music1')
-
-　　}
 		</script>
 	</body>
 </html>
