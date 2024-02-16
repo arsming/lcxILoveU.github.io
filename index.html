@@ -23,7 +23,7 @@
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
-					<h2>to lcx</h2>
+					<h2>to you</h2>
 					<div class="bb_text">
 						<div id="code" class="code">
 							<div>Please don't be in love with someone else.</div>
@@ -76,6 +76,7 @@
 		</audio>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			
 			//div中文字输出的，自个研究
@@ -100,16 +101,16 @@
 				return this;
 			}
 			// document.getElementById("code").typewriter();
-			document.getElementById('audio').play();
-			//因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
-					//因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
-			document.addEventListener("WeixinJSBridgeReady", function () {
-				document.getElementById('audio').play();
-			}, false);
-			// 监听摇晃事件简化版
-			window.addEventListener('devicemotion', function () {
-			    document.getElementById("audio").play(); // 成功播放
-			}, false);
+			// document.getElementById('audio').play();
+			// //因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
+			// 		//因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
+			// document.addEventListener("WeixinJSBridgeReady", function () {
+			// 	document.getElementById('audio').play();
+			// }, false);
+			// // 监听摇晃事件简化版
+			// window.addEventListener('devicemotion', function () {
+			//     document.getElementById("audio").play(); // 成功播放
+			// }, false);
 			
 			
 			$(document).snowfall('clear');
@@ -119,7 +120,22 @@
 				minSize: 5,
 				maxSize: 22
 			});
-    
+			window.onload = function(){
+			function autoPlayAudio() {
+					wx.config({
+						debug: false
+						, appId: ''
+						, timestamp: 1
+						, nonceStr: ''
+						, signature: ''
+						, jsApiList: []
+					});
+					wx.ready(function () {
+					document.getElementById("audio").play();
+					});
+				}
+			autoPlayAudio();
+		}
 		</script>
 	</body>
 </html>
