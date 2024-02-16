@@ -13,14 +13,18 @@
 		<table style="width:100%;font-size:1.1em">
 	</head>
 	<body>
-		<div class="wrap" id="content">
+		<div id="envelopeWrap">
+			<div class="card" id="envelope"></div>
+			<span class="Open">Open</span>
+		</div>
+		<div class="chest" id="chest">
+			<div class="heart left side top"></div>
+			<div class="heart center"></div>
+			<div class="heart right side"></div>
+		</div>
+		<div class="wrap" id="content" style="display: none;">
 			<div class="imgWrap">
 			<img src="images/speaknow-c.png"></img>
-			</div>
-			<div class="chest">
-				<div class="heart left side top"></div>
-				<div class="heart center"></div>
-				<div class="heart right side"></div>
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
@@ -97,6 +101,12 @@
 			window.addEventListener('devicemotion', function () {
 			    document.getElementById("audio").play(); // 成功播放
 			}, false);
+			 $('#envelope').click(function(){
+				$('.Open').hide()
+				$('#envelopeWrap').fadeOut(2500)
+				$("#content").fadeIn(3000)
+				$('#chest').animate({"left":"40px","top":"40px"},3000);
+			});
 		</script>
 	</body>
 </html>
