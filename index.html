@@ -8,7 +8,8 @@
 		<meta charset="utf-8">
 		<title>爱的告白</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css">
-		<style type='text/css'>img{width:100%;}</style>
+		<style type='text/css'>img{width:100%;}	</style>
+		<script src="js/jweixin-1.6.0.js" type="text/javascript" charset="utf-8"></script>
 		<table style="width:100%;font-size:1.1em">
 	</head>
 	<body>
@@ -23,7 +24,7 @@
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
-					<h2>to you2</h2>
+					<h2>to you3</h2>
 					<div class="bb_text">
 						<div id="code" class="code">
 							<div>Please don't be in love with someone else.</div>
@@ -76,24 +77,30 @@
 		</audio>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jweixin-1.6.0.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			// 播放音乐
 			// 微信配置信息 即使不正确也没问题，但是一定要有这一步
+			alert(1)
 			wx.config({
-				debug: false,
-				appId: '',
-				timestamp: 1,
-				nonceStr: '',
-				signature: '',
-				jsApiList: [],
-			});
-
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+				appId: 1, // 必填，公众号的唯一标识
+				timestamp: 2, // 必填，生成签名的时间戳
+				nonceStr: 3, // 必填，生成签名的随机串
+				signature: 4, // 必填，签名，见附录1
+				jsApiList: [
+				'onMenuShareTimeline', //分享朋友圈接口
+				'onMenuShareAppMessage', //分享给朋友接口
+				], // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			})
+			alert(2)
 			// 在ready时触发相关事件
 			wx.ready(function() {
+				alert(3)
 				// 播放背景音乐
 				var bgMusic = document.getElementById('bgmusic');
+				alert(4)
 				bgMusic.play();
+				alert(5)
 			});
 			//div中文字输出的，自个研究
 			Element.prototype.typewriter = function(a) {
