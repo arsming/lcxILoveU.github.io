@@ -71,13 +71,12 @@
 				</div>
 			</div>
 		</div>
-		<audio id="audio"src="music/Enchanted - Taylor Swift (Piano Cover).mp3" preload loop></audio>
+		<audio id="audio" src="music/Enchanted - Taylor Swift (Piano Cover).mp3" preload loop></audio>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			// 播放音乐
 			// 微信配置信息 即使不正确也没问题，但是一定要有这一步
-			alert(1)
 			wx.config({
 				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
 				appId: 1, // 必填，公众号的唯一标识
@@ -89,11 +88,12 @@
 				'onMenuShareAppMessage', //分享给朋友接口
 				], // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 			})
-			alert(2)
 			// 在ready时触发相关事件
 			wx.ready(function() {
 				// 播放背景音乐
+				alert(1)
 				document.querySelector('#audio').play()
+				alert(2)
 			});
 			//div中文字输出的，自个研究
 			Element.prototype.typewriter = function(a) {
