@@ -24,7 +24,7 @@
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
-					<h2>to you12</h2>
+					<h2>to you13</h2>
 					<div class="bb_text">
 						<div id="code" class="code">
 							<div>Please don't be in love with someone else.</div>
@@ -73,7 +73,7 @@
 		</div>
 		<script src="js/common.js"></script>
 		<script src="js/soundjs.min.js"></script>
-		<!-- <audio id="audio" src="music/Enchanted - Taylor Swift (Piano Cover).mp3" preload loop></audio> -->
+		<audio autoplay id="audio" src="enchanted1.mp3" preload loop></audio>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script>
@@ -84,61 +84,6 @@
 				minSize: 5,
 				maxSize: 22
 			});
-			var soundLoadComplete = false; // 背景音乐是否加载完毕
-            var backgroundMusicInstance = null; // 背景音乐实例
-            createjs.Sound.alternateExtensions = ['mp3'];
-            createjs.Sound.on('fileload', loadHandler, this);
-
-            function loadHandler(event) {
-                soundLoadComplete = true;
-            }
-
-            document.addEventListener(
-                'WeixinJSBridgeReady',
-                function() {
-                    createjs.Sound.registerSound('enchanted1.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
-                    var intInstance = setInterval(function() {
-                        if (soundLoadComplete) {
-                            clearInterval(intInstance);
-                            backgroundMusicInstance = createjs.Sound.play(
-                                'sound'
-                            );
-                        }
-                    }, 10);
-                },
-                false
-            );
-			// //div中文字输出的，自个研究
-			// Element.prototype.typewriter = function(a) {
-			// 	var d = this,
-			// 		c = d.innerHTML,
-			// 		b = 0;
-			// 	d.innerHTML = "";
-			// 	var e = setInterval(function() {
-			// 		var f = c.substr(b, 1);
-			// 		if (f == "<") {
-			// 			b = c.indexOf(">", b) + 1
-			// 		} else {
-			// 			b++
-			// 		}
-			// 		d.innerHTML = c.substring(0, b) + (b & 1 ? "_" : "");
-			// 		if (b >= c.length) {
-			// 			clearInterval(e)
-			// 		}
-			// 		$(".bb_text").scrollTop(9999);
-			// 	}, 150)
-			// 	return this;
-			// }
-			// document.getElementById("code").typewriter();
-			// document.getElementById('audio').play();
-			// //因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
-			// document.addEventListener("WeixinJSBridgeReady", function () { 
-			// 	document.getElementById('audio').play();
-			// }, false);
-			// // 监听摇晃事件简化版
-			// window.addEventListener('devicemotion', function () {
-			//     document.getElementById("audio").play(); // 成功播放
-			// }, false);
 		</script>
 	</body>
 </html>
