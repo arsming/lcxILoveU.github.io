@@ -24,7 +24,7 @@
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
-					<h2>to you6</h2>
+					<h2>to you7</h2>
 					<div class="bb_text">
 						<div id="code" class="code">
 							<div>Please don't be in love with someone else.</div>
@@ -76,28 +76,54 @@
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script>
+			var soundLoadComplete = false; // 背景音乐是否加载完毕
+            var backgroundMusicInstance = null; // 背景音乐实例
+            createjs.Sound.alternateExtensions = ['mp3'];
+            createjs.Sound.on('fileload', loadHandler, this);
 
-			//div中文字输出的，自个研究
-			Element.prototype.typewriter = function(a) {
-				var d = this,
-					c = d.innerHTML,
-					b = 0;
-				d.innerHTML = "";
-				var e = setInterval(function() {
-					var f = c.substr(b, 1);
-					if (f == "<") {
-						b = c.indexOf(">", b) + 1
-					} else {
-						b++
-					}
-					d.innerHTML = c.substring(0, b) + (b & 1 ? "_" : "");
-					if (b >= c.length) {
-						clearInterval(e)
-					}
-					$(".bb_text").scrollTop(9999);
-				}, 150)
-				return this;
-			}
+            function loadHandler(event) {
+                makeLog('music load complete');
+                soundLoadComplete = true;
+            }
+
+            document.addEventListener(
+                'WeixinJSBridgeReady',
+                function() {
+                    createjs.Sound.registerSound('Enchanted.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
+                    makeLog('WeixinJSBridgeReady');
+                    var intInstance = setInterval(function() {
+                        if (soundLoadComplete) {
+                            clearInterval(intInstance);
+                            makeLog('play');
+                            backgroundMusicInstance = createjs.Sound.play(
+                                'sound'
+                            );
+                        }
+                    }, 10);
+                },
+                false
+            );
+			// //div中文字输出的，自个研究
+			// Element.prototype.typewriter = function(a) {
+			// 	var d = this,
+			// 		c = d.innerHTML,
+			// 		b = 0;
+			// 	d.innerHTML = "";
+			// 	var e = setInterval(function() {
+			// 		var f = c.substr(b, 1);
+			// 		if (f == "<") {
+			// 			b = c.indexOf(">", b) + 1
+			// 		} else {
+			// 			b++
+			// 		}
+			// 		d.innerHTML = c.substring(0, b) + (b & 1 ? "_" : "");
+			// 		if (b >= c.length) {
+			// 			clearInterval(e)
+			// 		}
+			// 		$(".bb_text").scrollTop(9999);
+			// 	}, 150)
+			// 	return this;
+			// }
 			// document.getElementById("code").typewriter();
 			// document.getElementById('audio').play();
 			// //因为兼容性原因，手机默认关闭自动播放，这是让手机自动播放得，自个研究
@@ -115,30 +141,6 @@
 				minSize: 5,
 				maxSize: 22
 			});
-			var soundLoadComplete = false; // 背景音乐是否加载完毕
-            var backgroundMusicInstance = null; // 背景音乐实例
-            createjs.Sound.alternateExtensions = ['mp3'];
-            createjs.Sound.on('fileload', loadHandler, this);
-
-            function loadHandler(event) {
-                soundLoadComplete = true;
-            }
-
-            document.addEventListener(
-                'WeixinJSBridgeReady',
-                function() {
-                    createjs.Sound.registerSound('music/Enchanted.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
-                    var intInstance = setInterval(function() {
-                        if (soundLoadComplete) {
-                            clearInterval(intInstance);
-                            backgroundMusicInstance = createjs.Sound.play(
-                                'sound'
-                            );
-                        }
-                    }, 10);
-                },
-                false
-            );
 		</script>
 	</body>
 </html>
