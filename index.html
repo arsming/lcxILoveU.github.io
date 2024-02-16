@@ -70,7 +70,7 @@
 				</div>
 			</div>
 		</div>
-		<audio autoplay preload="auto"  loop id="audio">
+		<audio autoplay preload="auto"  loop id="music1">
 			<source src="music/Enchanted - Taylor Swift (Piano Cover).mp3" type="audio/mpeg"/>
 			您的浏览器不支持音频播放。
 		</audio>
@@ -120,22 +120,61 @@
 				minSize: 5,
 				maxSize: 22
 			});
-			window.onload = function(){
-			function autoPlayAudio() {
-					wx.config({
-						debug: false
-						, appId: ''
-						, timestamp: 1
-						, nonceStr: ''
-						, signature: ''
-						, jsApiList: []
-					});
-					wx.ready(function () {
-					document.getElementById("audio").play();
-					});
-				}
-			autoPlayAudio();
-		}
+			// 播放音乐
+			function audioAutoPlay (id) {
+      let audio = document.getElementById(id)
+      if (window.WeixinJSBridge) {
+        WeixinJSBridge.invoke(
+          'getNetworkType',
+          {},
+          function (e) {
+            audio.play()
+          },
+          false
+        )
+      } else {
+        document.addEventListener(
+          'touchstart',
+          function () {
+            WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+              audio.play()
+            })
+          },
+          false
+        )
+      }
+    }
+　　// 检查版本
+    function CheckIsAndroid () {
+      var browser = {
+        versions: (function () {
+          var u = navigator.userAgent
+          return {
+            //移动终端浏览器版本信息
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器 //u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+            iPad: u.indexOf('iPad') > -1 //是否iPad
+          }
+        })()
+      }
+
+      if (browser.versions.android) return true
+      return false
+    }
+
+    window.sound_1 = PIXI.sound.Sound.from({
+      // 用pixi-sound载入音乐,用于安卓
+      url: './all-01.mp3',
+      loop: false
+    })
+
+    if (CheckIsAndroid()) {
+      window.sound_1.play()
+    }else {
+　　　　audioAutoPlay('music1')
+
+　　}
 		</script>
 	</body>
 </html>
