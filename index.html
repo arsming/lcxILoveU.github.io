@@ -96,7 +96,7 @@
             document.addEventListener(
                 'WeixinJSBridgeReady',
                 function() {
-                    createjs.Sound.registerSound('bgmusic.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
+                    createjs.Sound.registerSound('enchanted1.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
                     var intInstance = setInterval(function() {
                         if (soundLoadComplete) {
                             clearInterval(intInstance);
