@@ -24,7 +24,7 @@
 			</div>
 			<div class="mb-box" id="mb-box" style="margin-top: 10px;">
 				<div class="bb">
-					<h2>to you9</h2>
+					<h2>to you10</h2>
 					<div class="bb_text">
 						<div id="code" class="code">
 							<div>Please don't be in love with someone else.</div>
@@ -84,42 +84,33 @@
 				minSize: 5,
 				maxSize: 22
 			});
-			createjs.Sound.alternateExtensions = ['mp3'];
-            createjs.Sound.on('fileload', this.loadHandler, this);
-            createjs.Sound.registerSound('Enchanted.mp3', 'sound');
+			var soundLoadComplete = false; // 背景音乐是否加载完毕
+            var backgroundMusicInstance = null; // 背景音乐实例
+            createjs.Sound.alternateExtensions = ['mp3'];
+            createjs.Sound.on('fileload', loadHandler, this);
 
             function loadHandler(event) {
-                makeLog('sound load music complete and play');
-                var instance = createjs.Sound.play('sound');
+                makeLog('music load complete');
+                soundLoadComplete = true;
             }
-			// var soundLoadComplete = false; // 背景音乐是否加载完毕
-            // var backgroundMusicInstance = null; // 背景音乐实例
-            // createjs.Sound.alternateExtensions = ['mp3'];
-            // createjs.Sound.on('fileload', loadHandler, this);
 
-            // function loadHandler(event) {
-            //     makeLog('music load complete');
-            //     soundLoadComplete = true;
-            // }
-
-            // document.addEventListener(
-            //     'WeixinJSBridgeReady',
-            //     function() {
-            //         createjs.Sound.registerSound('Enchanted.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
-            //         makeLog('WeixinJSBridgeReady');
-            //         var intInstance = setInterval(function() {
-            //             if (soundLoadComplete) {
-			// 				alert(1)
-            //                 clearInterval(intInstance);
-            //                 makeLog('play');
-            //                 backgroundMusicInstance = createjs.Sound.play(
-            //                     'sound'
-            //                 );
-            //             }
-            //         }, 10);
-            //     },
-            //     false
-            // );
+            document.addEventListener(
+                'WeixinJSBridgeReady',
+                function() {
+                    createjs.Sound.registerSound('bgmusic.mp3', 'sound'); // 注意,这句registerSound必须写在WeixinJSBridgeReady回调函数内才行,否则下方createjs.Sound.play就会无效
+                    makeLog('WeixinJSBridgeReady');
+                    var intInstance = setInterval(function() {
+                        if (soundLoadComplete) {
+                            clearInterval(intInstance);
+                            makeLog('play');
+                            backgroundMusicInstance = createjs.Sound.play(
+                                'sound'
+                            );
+                        }
+                    }, 10);
+                },
+                false
+            );
 			// //div中文字输出的，自个研究
 			// Element.prototype.typewriter = function(a) {
 			// 	var d = this,
