@@ -67,6 +67,9 @@
             case 'br':
                 this.handleBr(current);
                 break;
+            case 'nbsp':
+                this.handleNbsp(current);
+                break;
             case 'img':
                 this.handleImg(current);
                 break;
@@ -95,6 +98,7 @@
 
     proto.render = function(isEnd) {
         this.element.innerHTML = this.textArr.join('') + (isEnd ? '' : this.options.type)
+        // console.log(this.element.innerHTML,'this.element.innerHTML')
         this.element.scrollTop = this.element.scrollHeight;
     };
 
@@ -120,7 +124,12 @@
     };
 
     proto.handleBr = function(obj){
-        this.textArr.push('<br /><br />');
+        this.textArr.push('<br /><br />&nbsp;&nbsp;');
+        this.index++;
+        setTimeout(this.handle.bind(this), obj.time ? obj.time : this.options.speed)
+    };
+    proto.handleNbsp = function(obj){
+        this.textArr.push('&nbsp;&nbsp;');
         this.index++;
         setTimeout(this.handle.bind(this), obj.time ? obj.time : this.options.speed)
     };
