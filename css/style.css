@@ -22,8 +22,8 @@ body {
 }
 
 #content::after {
-  content: '❤';
-  color:#7F00FF;
+  content: '💜';
+  /* color:#7F00FF; */
   animation: blink 1000ms infinite;
 }
 .Open{
