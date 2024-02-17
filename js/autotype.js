@@ -124,7 +124,7 @@
     };
 
     proto.handleBr = function(obj){
-        this.textArr.push('<br /><br />&nbsp;&nbsp;');
+        this.textArr.push('<br /><br />');
         this.index++;
         setTimeout(this.handle.bind(this), obj.time ? obj.time : this.options.speed)
     };
