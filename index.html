@@ -101,23 +101,20 @@
 			window.addEventListener('devicemotion', function () {
 			    document.getElementById("audio").play(); // 成功播放
 			}, false);
-			 $('#envelope').click(function(){
+			function handleClick(){
 				$('.Open').hide()
 				$('#envelopeWrap').fadeOut(2500)
 				$("#content").fadeIn(3000)
 				$('#chest').animate({"left":"40px","top":"40px"},3000);
+			}
+			$('#envelope').click(function(){
+				handleClick()
 			});
 			$('#chest').click(function(){
-				$('.Open').hide()
-				$('#envelopeWrap').fadeOut(2500)
-				$("#content").fadeIn(3000)
-				$('#chest').animate({"left":"40px","top":"40px"},3000);
+				handleClick()
 			});
 			$('.Open').click(function(){
-				$('.Open').hide()
-				$('#envelopeWrap').fadeOut(2500)
-				$("#content").fadeIn(3000)
-				$('#chest').animate({"left":"40px","top":"40px"},3000);
+				handleClick()
 			});
 		</script>
 	</body>
