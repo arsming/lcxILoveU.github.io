@@ -224,7 +224,7 @@ to {
 	height: auto;
 	min-height: 180px;
 	height: 60vh;
-	padding: 20px 40px;
+	padding: 10px 15px;
 	text-indent: 2em;
 	line-height: 28px;
 	font-size: 16px;
@@ -234,7 +234,7 @@ to {
 
 .bb_myname {
 	text-align: right;
-	padding: 0px 40px 20px;
+	padding: 0px 20px 10px;
 	font-size: 20px;
 	line-height: 30px;
 	color: #3ADF00;
