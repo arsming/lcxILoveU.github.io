@@ -93,7 +93,7 @@
             this.index++;
             this.handle();
         }
-        $(".bb_text").scrollTop(9999);
+        // $(".bb_text").scrollTop(9999);
     };
 
     proto.render = function(isEnd) {

@@ -29,7 +29,20 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
+#content{
+	text-indent: 2em;
+}
+#contentLong .contentLongP{
+	text-indent: 2em;
+}
+.contentLast{
+	text-align: right;
+}
+.contentLast::after {
+	content: '💜';
+	/* color:#7F00FF; */
+	animation: blink 1000ms infinite;
+}
 #content::after {
   content: '💜';
   /* color:#7F00FF; */
@@ -142,13 +155,15 @@ to {
 .heart {
 	position: absolute;
 	z-index: 1002;
-	background:linear-gradient(-90deg,#CC66FF 0%,#9933CC 40%);
+	/* background:linear-gradient(-90deg,#CC66FF 0%,#9933CC 40%); */
+	background: #7F00FF;
 	animation: beat 0.7s ease infinite;
 }
 
 .heart.center {
-	background: linear-gradient(-45deg,#7F00FF 0%,#9933CC 40%);
-
+	/* background: linear-gradient(-45deg,#7F00FF 0%,#9933CC 40%); */
+	background: #7F00FF;
+	z-index: 1003;
 }
 
 .heart.top {
