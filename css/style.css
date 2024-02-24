@@ -156,13 +156,13 @@ to {
 	position: absolute;
 	z-index: 1002;
 	/* background:linear-gradient(-90deg,#CC66FF 0%,#9933CC 40%); */
-	background: #8d3f87;
+	background: #9933CC;
 	animation: beat 0.7s ease infinite;
 }
 
 .heart.center {
 	/* background: linear-gradient(-45deg,#8d3f87 0%,#9933CC 40%); */
-	background: #8d3f87;
+	background: #9933CC;
 	z-index: 1003;
 }
 
@@ -246,7 +246,7 @@ to {
 .bb_text {
 	height: auto;
 	min-height: 180px;
-	height: 70vh;
+	height: 75vh;
 	padding: 10px 15px;
 	line-height: 28px;
 	font-size: 16px;
@@ -256,10 +256,10 @@ to {
 
 .bb_myname {
 	text-align: right;
-	padding: 0px 20px 10px;
+	padding: 0px 0 10px;
 	font-size: 20px;
 	line-height: 30px;
-	color: #3ADF00;
+	color: #87CEFA;
 }
 
 /*滚动条样式*/
