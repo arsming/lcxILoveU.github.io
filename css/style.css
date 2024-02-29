@@ -16,13 +16,12 @@ body {
 	margin: 0;
 }
 .a{
-	color:#0000FF; /*设置文字颜色*/
 	text-decoration: none;
 	font-family:"微软雅黑";/*设置字体*/
 	-webkit-animation: shine 5.4s infinite;/*设置动画*/
  }
  @-webkit-keyframes shine{/*创建动画*/
-	 0%,100%{ color:#fff;text-shadow:0 0 10px #c850c0,0 0 10px #c850c0; }
+	 0%,100%{ color:#FE2E2E;text-shadow:0 0 10px #c850c0,0 0 10px #c850c0; }
 	 50%{ text-shadow:0 0 10px #0000FF,0 0 40px #0000FF; }
  }
 @keyframes blink {
@@ -240,8 +239,7 @@ to {
 	color: #FE2E2E;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	overflow: hidden;
-	text-shadow: 0 0 10px #FF3EFF;  /*设置文字阴影*/     
+	overflow: hidden; 
 }
 
 .bb_text {
@@ -262,7 +260,7 @@ to {
 	line-height: 30px;
 	color: #87CEFA;
 	padding:10px;
-	text-shadow: 0 0 10px #FF3EFF;  /*设置文字阴影*/     
+	
 }
 
 /*滚动条样式*/
